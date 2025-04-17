@@ -1,0 +1,156 @@
+# RELATÓRIO DE DESENVOLVIMENTO - PRIMEIRA ETAPA
+# SISTEMA DE GESTÃO ESCOLAR - VERSÃO 1.0.0
+# PROJETO INTEGRADOR III-A - GRUPO 11
+=====================================================================
+
+## 1. ORGANIZAÇÃO DO GRUPO
+
+O desenvolvimento do Sistema de Gestão Escolar foi realizado por uma equipe multidisciplinar, com cada membro assumindo responsabilidades específicas:
+
+- **Anderson**: Desenvolvedor principal e arquiteto do sistema. Responsável pela estrutura do código, padrões de design e integração entre os componentes.
+
+- **Monique**: Desenvolvedora da interface gráfica e responsável pela experiência do usuário (UX/UI).
+
+- **Cristiane**: Implementação das classes de domínio (Aluno e Turma) e das funcionalidades de validação.
+
+- **Emily**: Responsável pelo tratamento de exceções e pela implementação dos métodos toString() e equals().
+
+- **Eduardo**: Desenvolvedor das estruturas de dados personalizadas e algoritmos de ordenação.
+
+- **Laura**: Testes, documentação do código e garantia de qualidade.
+
+- **Jardel**: Implementação das consultas, relatórios e análise de requisitos.
+
+- **Franciele**: Desenvolvimento da lógica de negócios e implementação do sistema de matrículas e verificação de compatibilidade de idade.
+
+O trabalho foi dividido em módulos, seguindo os princípios da programação orientada a objetos, permitindo que cada membro desenvolvesse sua parte independentemente e depois integrasse ao sistema principal.
+
+## 2. METODOLOGIA DE DESENVOLVIMENTO
+
+O desenvolvimento foi organizado em etapas sequenciais:
+
+1. **Análise de Requisitos**: Identificação das funcionalidades necessárias baseadas na especificação do projeto.
+2. **Modelagem**: Definição das classes, relacionamentos e atributos necessários.
+3. **Implementação**: Codificação dos componentes do sistema.
+4. **Testes**: Verificação do funcionamento das funcionalidades.
+5. **Integração**: União dos módulos desenvolvidos separadamente.
+
+Utilizamos um repositório Git para controle de versão, permitindo o trabalho colaborativo e o acompanhamento das alterações realizadas por cada membro.
+
+## 3. DIFICULDADES ENCONTRADAS
+
+Durante o desenvolvimento da primeira etapa, enfrentamos diversos desafios:
+
+### 3.1. Implementação da Lista Personalizada
+
+A implementação da classe `ListaDeAlunos` exigiu um entendimento aprofundado de estruturas de dados:
+
+- Gerenciamento dinâmico do array de alunos
+- Implementação eficiente do algoritmo de ordenação
+- Tratamento de redimensionamento quando a capacidade máxima era atingida
+
+### 3.2. Validação de Regras de Negócio
+
+A implementação das regras de faixa etária para cada etapa de ensino requereu um cuidado especial:
+
+- Cálculo preciso de idade baseado na data de nascimento
+- Verificação de compatibilidade entre idade do aluno e etapa de ensino
+- Tratamento de casos limite (alunos próximos às fronteiras de idade)
+
+### 3.3. Interface com o Usuário
+
+O desenvolvimento de uma interface amigável, mesmo em modo console, apresentou desafios:
+
+- Captura e validação de entrada do usuário
+- Apresentação clara das informações
+- Tratamento de dados inválidos
+
+### 3.4. Tratamento de Exceções
+
+Lidar com possíveis erros durante a execução demandou um planejamento cuidadoso:
+
+- Validação de formatos de data
+- Tratamento de entradas inválidas
+- Prevenção de erros em operações críticas (matrícula, consultas)
+
+## 4. SOLUÇÕES PROPOSTAS
+
+Para cada desafio, desenvolvemos soluções específicas:
+
+### 4.1. Estrutura de Dados Personalizada
+
+Para a `ListaDeAlunos`, implementamos:
+
+- Um array dinâmico com capacidade de crescimento automático
+- Método de redimensionamento que dobra o tamanho quando necessário
+- Algoritmo de ordenação por nome (bubble sort) otimizado para a estrutura
+
+### 4.2. Sistema de Validação
+
+Para as regras de negócio:
+
+- Utilizamos a API de data do Java (LocalDate) para cálculos precisos de idade
+- Implementamos o Enum `EtapaEnsino` para representar as diferentes etapas
+- Criamos o método `verificarIdadeCompativel()` para centralizar a lógica de validação
+
+### 4.3. Interface e Experiência do Usuário
+
+Para melhorar a interação:
+
+- Desenvolvemos menus intuitivos com opções numeradas
+- Implementamos mensagens claras de sucesso e erro
+- Criamos métodos específicos para cada operação, facilitando a manutenção
+
+## 5. ERROS PROPOSITAIS E MELHORIAS PARA A SEGUNDA ETAPA
+
+**IMPORTANTE**: Como parte do processo de aprendizagem e para demonstrar a evolução do sistema entre as etapas do projeto, alguns "problemas" foram deixados propositalmente na primeira versão e serão corrigidos na segunda etapa:
+
+### 5.1. Problemas de Encoding
+
+Várias mensagens na interface possuem caracteres especiais mal formatados (ex: "N@0 h@ v@g@s disp0nív3is"). Estes problemas foram deixados intencionalmente para:
+
+- Demonstrar a importância do tratamento adequado de caracteres especiais
+- Evidenciar a necessidade de padronização de encoding no desenvolvimento
+- Permitir uma comparação clara entre as versões 1.0 e 2.0 do sistema
+
+### 5.2. Falta de Validação para Duplicidade
+
+A versão atual permite o cadastramento de alunos com o mesmo CPF ou turmas com o mesmo código. Esta limitação será corrigida na segunda etapa com:
+
+- Implementação de validação de CPF único
+- Verificação de código de turma único
+- Melhoria na estrutura de busca para validações eficientes
+
+### 5.3. Redundância de Informações
+
+Em alguns pontos da interface há redundância de informações (como exibição duplicada da versão). Esta característica será otimizada na próxima versão:
+
+- Remoção de informações duplicadas
+- Padronização da apresentação de dados
+- Interface mais limpa e profissional
+
+### 5.4. Persistência de Dados
+
+A versão atual mantém os dados apenas em memória. Na próxima etapa, implementaremos:
+
+- Sistema de persistência em arquivos
+- Carregamento de dados ao iniciar o sistema
+- Salvamento automático ao encerrar
+
+## 6. CONCLUSÕES DA PRIMEIRA ETAPA
+
+O Sistema de Gestão Escolar desenvolvido nesta primeira etapa atende a todos os requisitos fundamentais solicitados:
+
+- Implementação orientada a objetos
+- Cadastro de alunos e turmas com os dados requeridos
+- Implementação da lista personalizada de alunos
+- Relação entre alunos e turmas
+- Consultas e verificações de idade
+
+Os "problemas" mencionados foram mantidos propositalmente para demonstrar a evolução do sistema na segunda etapa, onde apresentaremos uma versão refinada, otimizada e com funcionalidades adicionais.
+
+Acreditamos que esta abordagem permite uma melhor compreensão do processo de desenvolvimento de software, evidenciando como um sistema evolui através de iterações sucessivas de análise, projeto, implementação e testes.
+
+=====================================================================
+EQUIPE DE DESENVOLVIMENTO - GRUPO 11
+Data: 25/03/2025
